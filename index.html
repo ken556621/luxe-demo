@@ -9,724 +9,476 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cream:#F7F7F7;
-  --rose:#6B3B35;
-  --navy:#2F4858;
-  --mid:#5C6174;
-  --warm:#5E5959;
-  --btn-bg:#EFE5DF;
-  --cta:#8B6347;
-  --footer-bg:#D3BFA4;
-  --gold:#C9A96E;
-  --white:#FFFFFF;
-  --border:#E8E0D6;
-  --radius:4px;
-  --radius-pill:40px;
+  --cream:#F7F7F7;--rose:#6B3B35;--navy:#2F4858;--mid:#5C6174;--warm:#5E5959;
+  --cta:#8B6347;--footer-bg:#D3BFA4;--gold:#C9A96E;--white:#FFFFFF;
+  --border:#E8E0D6;--r:4px;--pill:40px;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Noto Serif TC',serif;background:var(--cream);color:var(--navy);font-size:15px;line-height:1.7}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font-family:'Noto Serif TC',serif;cursor:pointer;border:none;background:none}
 
 /* ── ANNOUNCE ── */
-.announce{background:var(--white);text-align:center;padding:8px 20px;font-size:12px;color:var(--mid);letter-spacing:2px;border-bottom:1px solid var(--border)}
-.announce span{color:var(--cta);font-weight:500}
+.announce{background:var(--navy);color:rgba(255,255,255,0.72);text-align:center;padding:9px 20px;font-size:11px;letter-spacing:3px}
+.announce b{color:var(--gold);font-weight:400}
 
-/* ── NAV ── */
-nav{position:sticky;top:0;z-index:200;background:rgba(247,247,247,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:68px}
-.nav-logo{text-align:center;grid-column:2}
-.nav-logo a{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--rose);letter-spacing:3px;text-decoration:none;display:block;line-height:1.1}
-.nav-logo small{font-family:'Noto Serif TC',serif;font-size:9px;letter-spacing:4px;color:var(--gold);font-weight:300;display:block;margin-top:2px}
-.nav-left{display:flex;gap:28px;align-items:center}
-.nav-right{display:flex;gap:16px;align-items:center;justify-content:flex-end}
-.nav-link{font-size:12px;letter-spacing:2px;color:var(--navy);text-decoration:none;font-weight:400;transition:color 0.2s;cursor:pointer;background:none;border:none;font-family:'Noto Serif TC',serif}
-.nav-link:hover,.nav-link.active{color:var(--rose)}
-.nav-btn{background:var(--cta);color:var(--white);border:none;padding:7px 18px;border-radius:var(--radius-pill);font-size:11px;letter-spacing:2px;cursor:pointer;font-family:'Noto Serif TC',serif;transition:opacity 0.2s}
-.nav-btn:hover{opacity:0.85}
-.currency-sel{font-size:11px;letter-spacing:1px;color:var(--mid);border:1px solid var(--border);background:transparent;padding:4px 8px;border-radius:var(--radius);cursor:pointer;font-family:'Noto Serif TC',serif}
+/* ── HEADER MAIN (Logo 列) ── */
+.header-main{
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:0 48px;height:88px;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+}
+.header-left{display:flex;align-items:center;gap:16px}
+.header-search{
+  display:flex;align-items:center;gap:8px;
+  border:1px solid var(--border);border-radius:var(--pill);
+  padding:7px 18px;font-size:12px;color:var(--mid);letter-spacing:1px;
+  background:var(--cream);cursor:text;
+}
+.header-logo{text-align:center}
+.header-logo a{
+  font-family:'Cinzel',serif;font-size:20px;font-weight:700;
+  color:var(--rose);letter-spacing:4px;display:block;line-height:1;
+  text-decoration:none;
+}
+.header-logo small{
+  font-family:'Noto Serif TC',serif;font-size:9px;letter-spacing:5px;
+  color:var(--gold);font-weight:300;display:block;margin-top:6px;
+}
+.header-right{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.h-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--mid);transition:color .2s;cursor:pointer}
+.h-icon:hover{color:var(--rose)}
+.h-line{
+  display:flex;align-items:center;gap:6px;
+  background:var(--cta);color:var(--white);
+  padding:8px 20px;border-radius:var(--pill);
+  font-size:11px;letter-spacing:2px;cursor:pointer;transition:opacity .2s;
+}
+.h-line:hover{opacity:.85}
+.cur-sel{font-size:11px;letter-spacing:1px;color:var(--mid);border:1px solid var(--border);background:transparent;padding:6px 10px;border-radius:var(--r);cursor:pointer;font-family:'Noto Serif TC',serif}
+
+/* ── NAV BAR (品類列) ── */
+.header-nav{
+  background:var(--white);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;gap:0;
+}
+.nav-item{
+  position:relative;padding:14px 22px;
+  font-size:11px;letter-spacing:3px;color:var(--navy);
+  transition:color .2s;cursor:pointer;white-space:nowrap;
+}
+.nav-item:hover,.nav-item.active{color:var(--rose)}
+.nav-item::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:0;height:2px;background:var(--gold);transition:width .25s;
+}
+.nav-item:hover::after,.nav-item.active::after{width:60%}
+.nav-dot{color:var(--gold);font-size:8px;align-self:center}
 
 /* ── PAGES ── */
 .page{display:none}.page.active{display:block}
 
-/* ── HOME HERO ── */
-.hero{background:var(--white);padding:0}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;min-height:580px}
-.hero-img{background:linear-gradient(135deg,#e8ddd5 0%,#d5c4b5 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-img-text{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(107,59,53,0.08);font-style:italic;user-select:none;letter-spacing:-4px}
-.hero-img-badge{position:absolute;bottom:32px;left:32px;background:var(--white);padding:12px 20px;border-left:3px solid var(--gold)}
-.hero-img-badge p{font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:2px}
-.hero-img-badge strong{font-size:13px;color:var(--rose);letter-spacing:1px}
-.hero-content{padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
-.hero-eyebrow{font-size:10px;letter-spacing:5px;color:var(--gold);margin-bottom:20px;font-weight:400}
-.hero-title{font-family:'Cinzel',serif;font-size:clamp(32px,4vw,52px);font-weight:700;color:var(--rose);line-height:1.15;margin-bottom:16px;letter-spacing:1px}
-.hero-sub{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--warm);margin-bottom:28px;line-height:1.5}
-.hero-desc{font-size:13px;color:var(--mid);line-height:1.9;margin-bottom:40px;max-width:440px}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-.btn-cta{background:var(--cta);color:var(--white);padding:13px 32px;border-radius:var(--radius-pill);font-size:12px;letter-spacing:2px;border:none;cursor:pointer;font-family:'Noto Serif TC',serif;transition:opacity 0.2s}
-.btn-cta:hover{opacity:0.85}
-.btn-ghost{background:transparent;color:var(--navy);padding:13px 32px;border-radius:var(--radius-pill);font-size:12px;letter-spacing:2px;border:1px solid var(--border);cursor:pointer;font-family:'Noto Serif TC',serif;transition:all 0.2s}
-.btn-ghost:hover{border-color:var(--navy)}
+/* ── HERO ── */
+.hero{position:relative;height:88vh;min-height:560px;overflow:hidden;background:#1a1008}
+.hero-img{position:absolute;inset:0;opacity:.75}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(26,16,8,.68) 0%,rgba(26,16,8,.2) 55%,transparent 100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 8vw;max-width:640px}
+.hero-eyebrow{font-size:10px;letter-spacing:6px;color:var(--gold);margin-bottom:20px}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(40px,6vw,72px);font-weight:700;color:var(--white);line-height:1.1;letter-spacing:2px;margin-bottom:16px}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.5vw,26px);color:rgba(255,255,255,.7);margin-bottom:32px;letter-spacing:1px}
+.hero-actions{display:flex;gap:14px}
+.btn-cta{background:var(--cta);color:var(--white);padding:13px 32px;border-radius:var(--pill);font-size:12px;letter-spacing:2px;transition:opacity .2s}
+.btn-cta:hover{opacity:.85}
+.btn-outline-w{background:transparent;color:var(--white);padding:13px 32px;border-radius:var(--pill);font-size:12px;letter-spacing:2px;border:1px solid rgba(255,255,255,.4);transition:border-color .2s}
+.btn-outline-w:hover{border-color:rgba(255,255,255,.8)}
+.hero-badge{position:absolute;bottom:40px;right:60px;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1px solid rgba(201,162,101,.3);padding:16px 24px;border-radius:var(--r)}
+.hero-badge p{font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:4px}
+.hero-badge strong{font-size:14px;color:var(--white);font-weight:400;letter-spacing:1px}
 
-/* ── GOLD DIVIDER ── */
-.divider{text-align:center;padding:48px 20px;display:flex;align-items:center;justify-content:center;gap:24px}
-.divider-line{height:1px;width:80px;background:var(--gold);opacity:0.4}
-.divider-text{font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;color:var(--gold)}
+/* ── DIVIDER ── */
+.divider{display:flex;align-items:center;justify-content:center;gap:20px;padding:52px 40px}
+.div-line{height:1px;width:80px;background:var(--gold);opacity:.35}
+.div-txt{font-family:'Cinzel',serif;font-size:9px;letter-spacing:6px;color:var(--gold)}
 
-/* ── CATEGORIES ── */
-.categories{padding:0 40px 64px;max-width:1280px;margin:0 auto}
-.section-label{font-size:10px;letter-spacing:5px;color:var(--gold);margin-bottom:10px}
-.section-title{font-family:'Cinzel',serif;font-size:clamp(22px,3vw,32px);color:var(--rose);margin-bottom:8px}
-.section-sub{font-size:13px;color:var(--mid);margin-bottom:40px}
-.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.cat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px 16px;text-align:center;cursor:pointer;transition:all 0.25s}
-.cat-card:hover{border-color:var(--gold);transform:translateY(-3px)}
-.cat-icon{font-size:28px;margin-bottom:12px;display:block}
-.cat-card h4{font-family:'Cinzel',serif;font-size:12px;color:var(--navy);letter-spacing:2px;margin-bottom:4px}
-.cat-card span{font-size:11px;color:var(--mid)}
+/* ── EDITORIAL CATEGORY GRID ── */
+.editorial{max-width:1280px;margin:0 auto;padding:0 40px 72px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:380px 260px;gap:10px}
+.ed-card{position:relative;overflow:hidden;border-radius:var(--r);cursor:pointer}
+.ed-card img{transition:transform .6s ease}
+.ed-card:hover img{transform:scale(1.05)}
+.ed-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.64) 0%,transparent 55%)}
+.ed-label{position:absolute;bottom:22px;left:24px}
+.ed-label p{font-size:9px;letter-spacing:4px;color:var(--gold);margin-bottom:4px}
+.ed-label h3{font-family:'Cinzel',serif;font-size:20px;color:var(--white);font-weight:400;letter-spacing:2px}
+.ed-tall{grid-row:span 2}
 
-/* ── FEATURED PRODUCTS ── */
-.featured{background:var(--white);padding:64px 40px;margin-bottom:0}
+/* ── BRAND STRIP ── */
+.brands{padding:48px 40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white)}
+.brands-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand-name{font-family:'Cinzel',serif;font-size:12px;letter-spacing:4px;color:#bbb;transition:color .3s;cursor:pointer}
+.brand-name:hover{color:var(--rose)}
+
+/* ── FEATURED ── */
+.featured{background:var(--white);padding:72px 40px}
 .featured-inner{max-width:1280px;margin:0 auto}
-.featured-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
-.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.prod-card{cursor:pointer;transition:all 0.25s}
-.prod-card:hover .prod-img{transform:scale(1.02)}
-.prod-img-wrap{overflow:hidden;border-radius:var(--radius);margin-bottom:16px;aspect-ratio:3/4;position:relative}
-.prod-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:2px;transition:transform 0.4s;position:relative}
-.prod-badge{position:absolute;top:12px;left:12px;font-size:10px;letter-spacing:1px;padding:4px 10px;border-radius:var(--radius-pill)}
-.badge-new{background:var(--rose);color:white}
-.badge-hot{background:var(--cta);color:white}
-.badge-pre{background:var(--navy);color:white}
-.prod-brand{font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:4px}
-.prod-name{font-size:14px;color:var(--navy);margin-bottom:4px;font-weight:500}
-.prod-meta{font-size:12px;color:var(--mid);margin-bottom:8px}
-.prod-price{font-family:'Cinzel',serif;font-size:16px;color:var(--rose);font-weight:500}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px}
+.sec-label{font-size:10px;letter-spacing:5px;color:var(--gold);margin-bottom:8px}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(22px,3vw,32px);color:var(--rose);font-weight:400}
+.link-more{font-size:12px;letter-spacing:2px;color:var(--mid);border-bottom:1px solid var(--border);padding-bottom:2px;cursor:pointer;transition:color .2s}
+.link-more:hover{color:var(--rose)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.prod-card{cursor:pointer}
+.prod-img-wrap{position:relative;overflow:hidden;border-radius:var(--r);margin-bottom:18px;aspect-ratio:3/4;background:#eee}
+.prod-img-wrap img{transition:transform .5s ease}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.05)}
+.prod-badge{position:absolute;top:12px;left:12px;z-index:1;font-size:9px;letter-spacing:2px;padding:5px 12px;border-radius:var(--pill)}
+.b-new{background:var(--rose);color:var(--white)}
+.b-hot{background:var(--cta);color:var(--white)}
+.b-pre{background:var(--navy);color:var(--white)}
+.prod-brand{font-size:9px;letter-spacing:4px;color:var(--gold);margin-bottom:5px}
+.prod-name{font-size:14px;color:var(--navy);font-weight:500;margin-bottom:4px}
+.prod-meta{font-size:12px;color:var(--mid);margin-bottom:10px}
+.prod-row{display:flex;justify-content:space-between;align-items:center}
+.prod-price{font-family:'Cinzel',serif;font-size:15px;color:var(--rose)}
+.prod-status{font-size:10px;letter-spacing:1px;padding:3px 10px;border-radius:var(--pill)}
+.s-in{background:#edf5ed;color:#2a6b2a}.s-pre{background:#f5edf3;color:#6b2a5a}.s-wait{background:#f5f0ed;color:#6b4a2a}
 
-/* ── AI FEATURE BANNER ── */
-.ai-banner{background:linear-gradient(135deg,var(--navy) 0%,#1a2f3a 100%);padding:80px 40px;text-align:center;cursor:pointer;transition:opacity 0.2s}
-.ai-banner:hover{opacity:0.95}
-.ai-banner-inner{max-width:700px;margin:0 auto}
-.ai-banner p.label{font-size:10px;letter-spacing:5px;color:var(--gold);margin-bottom:16px}
-.ai-banner h2{font-family:'Cinzel',serif;font-size:clamp(24px,4vw,40px);color:var(--white);margin-bottom:16px;letter-spacing:2px}
-.ai-banner p.desc{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:32px}
-.btn-gold{background:var(--gold);color:var(--white);padding:13px 36px;border-radius:var(--radius-pill);font-size:12px;letter-spacing:2px;border:none;cursor:pointer;font-family:'Noto Serif TC',serif;transition:opacity 0.2s}
-.btn-gold:hover{opacity:0.85}
+/* ── ABOUT ROW ── */
+.about-row{max-width:1280px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-img-wrap{height:520px;overflow:hidden;border-radius:var(--r)}
+.about-text .sec-label{display:block;margin-bottom:12px}
+.about-text .sec-title{margin-bottom:20px}
+.about-desc{font-size:14px;color:var(--mid);line-height:2;margin-bottom:32px}
+.about-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.about-list li{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mid)}
+.about-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
 
-/* ── SHOP PAGE ── */
-.shop-layout{max-width:1280px;margin:0 auto;padding:48px 40px;display:grid;grid-template-columns:220px 1fr;gap:48px}
-.filter-panel h3{font-family:'Cinzel',serif;font-size:13px;letter-spacing:3px;color:var(--rose);margin-bottom:20px}
-.filter-group{margin-bottom:28px}
-.filter-group h4{font-size:11px;letter-spacing:3px;color:var(--mid);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.filter-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer;font-size:13px;color:var(--navy)}
-.filter-item input{accent-color:var(--rose)}
-.shop-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
-.shop-header h2{font-family:'Cinzel',serif;font-size:22px;color:var(--rose)}
-.shop-count{font-size:12px;color:var(--mid)}
-.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-
-/* ── AI PAGE ── */
-.ai-page{max-width:1000px;margin:0 auto;padding:64px 40px}
-.ai-page-header{text-align:center;margin-bottom:56px}
-.ai-page-header .section-label{display:block;margin-bottom:12px}
-.ai-page-header h2{font-family:'Cinzel',serif;font-size:clamp(24px,4vw,38px);color:var(--rose);margin-bottom:12px}
-.ai-page-header p{font-size:14px;color:var(--mid);max-width:560px;margin:0 auto;line-height:1.8}
-.ai-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:56px}
-.ai-step{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;text-align:center}
-.step-num{font-family:'Cinzel',serif;font-size:32px;color:var(--gold);font-weight:700;margin-bottom:12px;display:block}
-.ai-step h4{font-size:13px;color:var(--navy);margin-bottom:6px;letter-spacing:1px}
-.ai-step p{font-size:12px;color:var(--mid);line-height:1.7}
-.upload-zone{background:var(--white);border:2px dashed var(--border);border-radius:var(--radius);padding:64px 40px;text-align:center;cursor:pointer;transition:all 0.25s;margin-bottom:40px;position:relative}
-.upload-zone:hover,.upload-zone.drag{border-color:var(--gold);background:#fdf8f4}
-.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.upload-icon{font-size:40px;margin-bottom:16px;display:block}
-.upload-zone h3{font-family:'Cinzel',serif;font-size:18px;color:var(--rose);margin-bottom:8px}
-.upload-zone p{font-size:13px;color:var(--mid);margin-bottom:20px}
-.upload-zone .btn-ghost{display:inline-block}
-.preview-wrap{display:none;text-align:center;margin-bottom:40px}
-.preview-wrap img{max-width:320px;max-height:320px;border-radius:var(--radius);border:1px solid var(--border);object-fit:cover}
-.preview-wrap h4{font-size:13px;color:var(--mid);margin-top:12px}
-/* ANALYZING */
-.analyzing{display:none;text-align:center;padding:48px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:40px}
-.analyzing-spinner{width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 0.9s linear infinite;margin:0 auto 20px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.analyzing h3{font-family:'Cinzel',serif;font-size:18px;color:var(--navy);margin-bottom:8px}
-.analyzing p{font-size:13px;color:var(--mid)}
-.analyzing .progress-bar{width:240px;height:3px;background:var(--border);border-radius:2px;margin:20px auto 0;overflow:hidden}
-.analyzing .progress-fill{height:100%;background:var(--gold);border-radius:2px;animation:progress 2.4s ease forwards}
-@keyframes progress{from{width:0%}to{width:100%}}
-/* RESULTS */
-.results{display:none}
-.result-header{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:24px}
-.result-top{display:flex;gap:28px;align-items:flex-start;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
-.result-preview{width:120px;height:120px;border-radius:var(--radius);object-fit:cover;flex-shrink:0;border:1px solid var(--border)}
-.result-info h3{font-family:'Cinzel',serif;font-size:22px;color:var(--rose);margin-bottom:4px}
-.result-brand{font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:12px}
-.result-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.result-tag{font-size:11px;padding:4px 12px;border-radius:var(--radius-pill);background:var(--btn-bg);color:var(--navy)}
-.confidence-bar{display:flex;align-items:center;gap:12px;margin-top:8px}
-.confidence-bar span{font-size:12px;color:var(--mid);min-width:80px}
-.conf-track{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-.conf-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--cta));border-radius:2px}
-.result-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.meta-item{background:var(--cream);padding:16px;border-radius:var(--radius)}
-.meta-item label{font-size:10px;letter-spacing:3px;color:var(--gold);display:block;margin-bottom:4px}
-.meta-item p{font-size:14px;color:var(--navy);font-weight:500}
-.inventory-section h3{font-family:'Cinzel',serif;font-size:18px;color:var(--rose);margin-bottom:6px;letter-spacing:2px}
-.inventory-section>p{font-size:13px;color:var(--mid);margin-bottom:24px}
-.inventory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.inv-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.25s}
-.inv-card:hover{border-color:var(--gold);transform:translateY(-3px)}
-.inv-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:2px;color:rgba(255,255,255,0.7)}
-.inv-body{padding:16px}
-.inv-brand{font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:4px}
-.inv-name{font-size:13px;color:var(--navy);font-weight:500;margin-bottom:4px}
-.inv-color{font-size:11px;color:var(--mid);margin-bottom:10px}
-.inv-footer{display:flex;justify-content:space-between;align-items:center}
-.inv-price{font-family:'Cinzel',serif;font-size:15px;color:var(--rose)}
-.inv-status{font-size:10px;letter-spacing:1px;padding:3px 10px;border-radius:var(--radius-pill)}
-.status-in{background:#e8f4e8;color:#2d7a2d}
-.status-pre{background:#f4e8f0;color:#7a2d5a}
-.status-wait{background:#f4f0e8;color:#7a5a2d}
-.ai-reset{display:block;margin:32px auto 0;background:transparent;border:1px solid var(--border);color:var(--mid);padding:10px 28px;border-radius:var(--radius-pill);font-size:12px;letter-spacing:2px;cursor:pointer;font-family:'Noto Serif TC',serif;transition:all 0.2s}
-.ai-reset:hover{border-color:var(--navy);color:var(--navy)}
+/* ── SHOP ── */
+.shop-wrap{max-width:1280px;margin:0 auto;padding:52px 40px;display:grid;grid-template-columns:200px 1fr;gap:52px}
+.filter h3{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:var(--rose);margin-bottom:20px}
+.f-group{margin-bottom:28px}
+.f-group h4{font-size:10px;letter-spacing:3px;color:var(--mid);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.f-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:var(--navy);cursor:pointer}
+.f-item input{accent-color:var(--rose)}
+.shop-main-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+.shop-main-hd h2{font-family:'Cinzel',serif;font-size:22px;color:var(--rose);font-weight:400}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 
 /* ── FOOTER ── */
-footer{background:var(--footer-bg);padding:56px 40px 32px}
-.footer-inner{max-width:1280px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-brand .logo{font-family:'Cinzel',serif;font-size:16px;color:var(--rose);letter-spacing:3px;display:block;margin-bottom:12px}
-.footer-brand p{font-size:12px;color:var(--mid);line-height:1.8}
-.footer-col h4{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:var(--rose);margin-bottom:16px}
-.footer-col ul{list-style:none}
-.footer-col li{font-size:12px;color:var(--mid);margin-bottom:8px;cursor:pointer;transition:color 0.2s}
-.footer-col li:hover{color:var(--rose)}
-.footer-bottom{border-top:1px solid rgba(95,86,76,0.2);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
-.footer-bottom p{font-size:11px;color:var(--mid)}
-.footer-line{display:flex;align-items:center;gap:20px}
+footer{background:var(--footer-bg);padding:64px 40px 32px}
+.foot-inner{max-width:1280px;margin:0 auto}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px}
+.foot-brand .logo{font-family:'Cinzel',serif;font-size:16px;color:var(--rose);letter-spacing:3px;display:block;margin-bottom:14px}
+.foot-brand p{font-size:12px;color:var(--mid);line-height:1.9}
+.foot-col h4{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;color:var(--rose);margin-bottom:16px}
+.foot-col ul{list-style:none}
+.foot-col li{font-size:12px;color:var(--mid);margin-bottom:9px;cursor:pointer;transition:color .2s}
+.foot-col li:hover{color:var(--rose)}
+.foot-bottom{border-top:1px solid rgba(95,86,76,.2);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.foot-bottom p{font-size:11px;color:var(--mid)}
+.foot-gems{display:flex;gap:8px;align-items:center}
+.foot-gems span{font-size:10px;color:var(--mid);letter-spacing:1px}
+.foot-gems .dot{color:var(--gold)}
 
-/* ── DEMO BADGE ── */
-.demo-badge{position:fixed;bottom:20px;right:20px;background:rgba(139,99,71,0.9);color:white;font-size:11px;letter-spacing:2px;padding:6px 14px;border-radius:var(--radius-pill);z-index:999}
-
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-img{min-height:260px}
-  .cat-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:960px){
+  .header-main{padding:0 20px;height:72px}.header-search{display:none}
+  .editorial{grid-template-columns:1fr 1fr;grid-template-rows:auto;height:auto;padding:0 20px 40px}
+  .ed-tall{grid-row:auto}
   .prod-grid{grid-template-columns:repeat(2,1fr)}
-  .shop-layout{grid-template-columns:1fr}
-  .filter-panel{display:none}
-  .ai-steps{grid-template-columns:1fr}
-  .inventory-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-top{grid-template-columns:1fr 1fr}
+  .about-row{grid-template-columns:1fr;padding:48px 20px}
+  .shop-wrap{grid-template-columns:1fr}.filter{display:none}
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .featured{padding:48px 20px}
+  .brands{padding:32px 20px}
 }
 </style>
 </head>
 <body>
 
-<div class="demo-badge">DEMO 版本</div>
-
 <!-- ANNOUNCE -->
 <div class="announce">
-  免費代購諮詢 &nbsp;·&nbsp; <span>LINE 即時回覆</span> &nbsp;·&nbsp; 全台宅配 / 門市自取 &nbsp;·&nbsp; 正品保證
+  免費代購諮詢 &nbsp;<b>·</b>&nbsp; LINE 即時回覆 &nbsp;<b>·</b>&nbsp; 全台宅配 / 門市自取 &nbsp;<b>·</b>&nbsp; <b>正品保證</b>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="nav-left">
-      <button class="nav-link active" onclick="showPage('home')">首頁</button>
-      <button class="nav-link" onclick="showPage('shop')">全部商品</button>
-      <button class="nav-link" onclick="showPage('ai')">AI 包款辨識</button>
-      <button class="nav-link">關於我們</button>
+<!-- HEADER MAIN -->
+<header>
+  <div class="header-main">
+    <div class="header-left">
+      <div class="header-search">🔍 &nbsp;搜尋商品、品牌...</div>
     </div>
-    <div class="nav-logo">
-      <a href="#" onclick="showPage('home');return false;">
+    <div class="header-logo">
+      <a href="#" onclick="showPage('home');return false">
         LUXE EXPLORE
-        <small>BOUTIQUE · 歐洲精品代購</small>
+        <small>BOUTIQUE &nbsp;·&nbsp; 歐洲精品代購</small>
       </a>
     </div>
-    <div class="nav-right">
-      <select class="currency-sel" onchange="changeCurrency(this.value)">
+    <div class="header-right">
+      <select class="cur-sel" onchange="changeCurrency(this.value)">
         <option value="TWD">TWD</option>
         <option value="USD">USD</option>
         <option value="JPY">JPY</option>
         <option value="EUR">EUR</option>
       </select>
-      <button class="nav-btn" onclick="showPage('ai')">🔍 AI 辨識</button>
+      <div class="h-icon">👤</div>
+      <div class="h-icon">🛍</div>
+      <div class="h-line">LINE 諮詢</div>
     </div>
   </div>
-</nav>
 
-<!-- ════════════════════════════════
-     HOME PAGE
-════════════════════════════════ -->
+  <!-- NAV BAR -->
+  <nav class="header-nav">
+    <span class="nav-item active" onclick="showPage('home')">首頁</span>
+    <span class="nav-dot">·</span>
+    <span class="nav-item" onclick="showPage('shop')">BAGS</span>
+    <span class="nav-dot">·</span>
+    <span class="nav-item" onclick="showPage('shop')">WALLETS</span>
+    <span class="nav-dot">·</span>
+    <span class="nav-item" onclick="showPage('shop')">JEWELRY</span>
+    <span class="nav-dot">·</span>
+    <span class="nav-item" onclick="showPage('shop')">ACCESSORIES</span>
+    <span class="nav-dot">·</span>
+    <span class="nav-item" onclick="showPage('shop')">APPAREL</span>
+    <span class="nav-dot">·</span>
+    <span class="nav-item" onclick="showPage('shop')">SHOES</span>
+    <span class="nav-dot">·</span>
+    <span class="nav-item">關於我們</span>
+  </nav>
+</header>
+
+<!-- ════ HOME PAGE ════ -->
 <div class="page active" id="page-home">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-grid">
-      <div class="hero-img">
-        <div class="hero-img-text">LV</div>
-        <div class="hero-img-badge">
-          <p>NEW ARRIVAL</p>
-          <strong>2025 秋冬新款已上架</strong>
-        </div>
+  <section class="hero">
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1800&q=85&fit=crop&crop=center" alt="hero">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">PARIS · MILAN · LONDON · 2025</p>
+      <h1 class="hero-title">Curated<br>Luxury,<br>Delivered.</h1>
+      <p class="hero-sub">歐洲精品，私人選品，直送台灣</p>
+      <div class="hero-actions">
+        <button class="btn-cta" onclick="showPage('shop')">探索商品</button>
+        <button class="btn-outline-w">代購諮詢</button>
       </div>
-      <div class="hero-content">
-        <p class="hero-eyebrow">EUROPE · PARIS · MILAN · LONDON</p>
-        <h1 class="hero-title">Paris<br>Curated<br>For You.</h1>
-        <p class="hero-sub">歐洲精品，私人選品，直送台灣</p>
-        <p class="hero-desc">Luxe Explore Boutique 深耕歐洲精品代購多年，精選 Louis Vuitton、Chanel、Hermès、Gucci、Dior 等一線名牌，提供正品保證與 LINE 即時服務。</p>
-        <div class="hero-actions">
-          <button class="btn-cta" onclick="showPage('shop')">瀏覽商品</button>
-          <button class="btn-ghost" onclick="showPage('ai')">✦ AI 包款辨識</button>
-        </div>
-      </div>
+    </div>
+    <div class="hero-badge">
+      <p>NEW ARRIVAL</p>
+      <strong>2025 秋冬系列已上架</strong>
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="div-line"></div>
+    <span class="div-txt">SHOP BY CATEGORY</span>
+    <div class="div-line"></div>
+  </div>
+
+  <!-- EDITORIAL GRID -->
+  <div class="editorial">
+    <div class="ed-card ed-tall" onclick="showPage('shop')">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=80&fit=crop" alt="bags">
+      <div class="ed-overlay"></div>
+      <div class="ed-label"><p>CATEGORY</p><h3>BAGS</h3></div>
+    </div>
+    <div class="ed-card" onclick="showPage('shop')">
+      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=700&q=80&fit=crop" alt="jewelry">
+      <div class="ed-overlay"></div>
+      <div class="ed-label"><p>CATEGORY</p><h3>JEWELRY</h3></div>
+    </div>
+    <div class="ed-card" onclick="showPage('shop')">
+      <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=700&q=80&fit=crop" alt="accessories">
+      <div class="ed-overlay"></div>
+      <div class="ed-label"><p>CATEGORY</p><h3>ACCESSORIES</h3></div>
+    </div>
+    <div class="ed-card" onclick="showPage('shop')">
+      <img src="https://images.unsplash.com/photo-1606422272-4f48e16c1cf7?w=700&q=80&fit=crop" alt="wallets">
+      <div class="ed-overlay"></div>
+      <div class="ed-label"><p>CATEGORY</p><h3>WALLETS</h3></div>
+    </div>
+    <div class="ed-card" onclick="showPage('shop')">
+      <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700&q=80&fit=crop" alt="shoes">
+      <div class="ed-overlay"></div>
+      <div class="ed-label"><p>CATEGORY</p><h3>SHOES</h3></div>
     </div>
   </div>
 
-  <!-- DIVIDER -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <span class="divider-text">SHOP BY CATEGORY</span>
-    <div class="divider-line"></div>
-  </div>
-
-  <!-- CATEGORIES -->
-  <div class="categories">
-    <div class="cat-grid">
-      <div class="cat-card" onclick="showPage('shop')">
-        <span class="cat-icon">👜</span>
-        <h4>BAGS</h4>
-        <span>包包 · 48件</span>
-      </div>
-      <div class="cat-card" onclick="showPage('shop')">
-        <span class="cat-icon">👛</span>
-        <h4>WALLETS</h4>
-        <span>小皮件 · 36件</span>
-      </div>
-      <div class="cat-card" onclick="showPage('shop')">
-        <span class="cat-icon">💎</span>
-        <h4>JEWELRY</h4>
-        <span>珠寶配飾 · 22件</span>
-      </div>
-      <div class="cat-card" onclick="showPage('shop')">
-        <span class="cat-icon">🕶</span>
-        <h4>ACCESSORIES</h4>
-        <span>配件 · 31件</span>
-      </div>
-      <div class="cat-card" onclick="showPage('shop')">
-        <span class="cat-icon">👗</span>
-        <h4>APPAREL</h4>
-        <span>服飾 · 15件</span>
-      </div>
-      <div class="cat-card" onclick="showPage('shop')">
-        <span class="cat-icon">👠</span>
-        <h4>SHOES</h4>
-        <span>鞋履 · 19件</span>
-      </div>
+  <!-- BRAND STRIP -->
+  <div class="brands">
+    <div class="brands-inner">
+      <span class="brand-name">LOUIS VUITTON</span>
+      <span class="brand-name">CHANEL</span>
+      <span class="brand-name">HERMÈS</span>
+      <span class="brand-name">GUCCI</span>
+      <span class="brand-name">DIOR</span>
+      <span class="brand-name">PRADA</span>
+      <span class="brand-name">BOTTEGA VENETA</span>
+      <span class="brand-name">CELINE</span>
     </div>
   </div>
 
   <!-- FEATURED -->
   <div class="featured">
     <div class="featured-inner">
-      <div class="featured-header">
+      <div class="sec-header">
         <div>
-          <p class="section-label">FEATURED ITEMS</p>
-          <h2 class="section-title">本週精選</h2>
+          <p class="sec-label">FEATURED ITEMS</p>
+          <h2 class="sec-title">本週精選</h2>
         </div>
-        <button class="btn-ghost" onclick="showPage('shop')" style="font-size:12px">查看全部 →</button>
+        <span class="link-more" onclick="showPage('shop')">查看全部商品 →</span>
       </div>
-      <div class="prod-grid" id="homeProductGrid"></div>
+      <div class="prod-grid" id="homeGrid"></div>
     </div>
   </div>
 
-  <!-- DIVIDER -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <span class="divider-text">AI RECOGNITION</span>
-    <div class="divider-line"></div>
-  </div>
-
-  <!-- AI BANNER -->
-  <div class="ai-banner" onclick="showPage('ai')">
-    <div class="ai-banner-inner">
-      <p class="label">POWERED BY GOOGLE CLOUD VISION</p>
-      <h2>拍照秒識包款<br>比對庫存一鍵完成</h2>
-      <p class="desc">不確定是哪款包？上傳照片，AI 自動辨識品牌與型號，即時比對我們的庫存，找到您的夢想包。</p>
-      <button class="btn-gold">立即體驗 AI 辨識 →</button>
+  <!-- ABOUT -->
+  <div class="about-row">
+    <div class="about-img-wrap">
+      <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=900&q=80&fit=crop&crop=center" alt="about">
+    </div>
+    <div class="about-text">
+      <span class="sec-label">ABOUT US</span>
+      <h2 class="sec-title">深耕歐洲精品<br>十年代購經驗</h2>
+      <p class="about-desc">Luxe Explore Boutique 深耕歐洲精品代購多年，長期派駐專業買手於巴黎、米蘭、倫敦等地，直接從品牌官店與授權精品百貨採購，確保每件商品皆為真品。</p>
+      <ul class="about-list">
+        <li>全程正品保證，附品牌購買憑證</li>
+        <li>LINE 即時報價，24 小時內回覆</li>
+        <li>代購全程透明，歐洲現場照片確認</li>
+        <li>專業包裝防護，安全送達台灣</li>
+        <li>售後服務完善，協助原廠維修諮詢</li>
+      </ul>
+      <button class="btn-cta">了解更多</button>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
+    <div class="foot-inner">
+      <div class="foot-top">
+        <div class="foot-brand">
           <span class="logo">LUXE EXPLORE</span>
-          <p>專業歐洲精品代購，Paris · Milan · London 直送台灣。正品保證，LINE 即時服務，是您最值得信賴的精品夥伴。</p>
+          <p>專業歐洲精品代購，Paris · Milan · London 直送台灣。正品保證，LINE 即時服務，十年如一日的品質承諾。</p>
         </div>
-        <div class="footer-col">
-          <h4>SHOP</h4>
-          <ul>
-            <li>包包</li><li>小皮件</li><li>珠寶配飾</li><li>配件</li><li>服飾</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>SERVICE</h4>
-          <ul>
-            <li>代購流程</li><li>正品鑑定</li><li>退換貨政策</li><li>常見問題</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>CONTACT</h4>
-          <ul>
-            <li>LINE @luxe.explore</li><li>IG @luxeexplore.tw</li><li>FB Luxe Explore Boutique</li>
-          </ul>
-        </div>
+        <div class="foot-col"><h4>SHOP</h4><ul><li>包包</li><li>小皮件</li><li>珠寶配飾</li><li>配件</li><li>服飾 / 鞋履</li></ul></div>
+        <div class="foot-col"><h4>SERVICE</h4><ul><li>代購流程說明</li><li>正品鑑定</li><li>退換貨政策</li><li>關稅說明</li><li>常見問題</li></ul></div>
+        <div class="foot-col"><h4>CONNECT</h4><ul><li>LINE @luxe.explore</li><li>Instagram</li><li>Facebook</li><li>聯絡我們</li></ul></div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2026 Luxe Explore Boutique — 本頁為示範 Demo</p>
-        <div class="footer-line">
-          <span style="font-size:11px;color:var(--mid)">正品保證</span>
-          <span style="color:var(--gold)">✦</span>
-          <span style="font-size:11px;color:var(--mid)">LINE 即時服務</span>
-          <span style="color:var(--gold)">✦</span>
-          <span style="font-size:11px;color:var(--mid)">全台配送</span>
+      <div class="foot-bottom">
+        <p>© 2026 Luxe Explore Boutique</p>
+        <div class="foot-gems">
+          <span>正品保證</span><span class="dot">✦</span>
+          <span>LINE 即時服務</span><span class="dot">✦</span>
+          <span>全台配送</span>
         </div>
       </div>
     </div>
   </footer>
 </div>
 
-<!-- ════════════════════════════════
-     SHOP PAGE
-════════════════════════════════ -->
+<!-- ════ SHOP PAGE ════ -->
 <div class="page" id="page-shop">
-  <div class="shop-layout">
-    <div class="filter-panel">
+  <div class="shop-wrap">
+    <aside class="filter">
       <h3>FILTER</h3>
-      <div class="filter-group">
+      <div class="f-group">
         <h4>BRAND</h4>
-        <label class="filter-item"><input type="checkbox" checked> Louis Vuitton (12)</label>
-        <label class="filter-item"><input type="checkbox"> Chanel (8)</label>
-        <label class="filter-item"><input type="checkbox"> Hermès (5)</label>
-        <label class="filter-item"><input type="checkbox"> Gucci (9)</label>
-        <label class="filter-item"><input type="checkbox"> Dior (7)</label>
-        <label class="filter-item"><input type="checkbox"> Prada (6)</label>
+        <label class="f-item"><input type="checkbox" checked> Louis Vuitton</label>
+        <label class="f-item"><input type="checkbox"> Chanel</label>
+        <label class="f-item"><input type="checkbox"> Hermès</label>
+        <label class="f-item"><input type="checkbox"> Gucci</label>
+        <label class="f-item"><input type="checkbox"> Dior</label>
+        <label class="f-item"><input type="checkbox"> Prada</label>
       </div>
-      <div class="filter-group">
+      <div class="f-group">
         <h4>CATEGORY</h4>
-        <label class="filter-item"><input type="checkbox" checked> 包包</label>
-        <label class="filter-item"><input type="checkbox"> 小皮件</label>
-        <label class="filter-item"><input type="checkbox"> 配件</label>
+        <label class="f-item"><input type="checkbox" checked> 包包</label>
+        <label class="f-item"><input type="checkbox"> 小皮件</label>
+        <label class="f-item"><input type="checkbox"> 配件</label>
       </div>
-      <div class="filter-group">
-        <h4>PRICE</h4>
-        <label class="filter-item"><input type="radio" name="price"> 5萬以下</label>
-        <label class="filter-item"><input type="radio" name="price" checked> 5–20萬</label>
-        <label class="filter-item"><input type="radio" name="price"> 20萬以上</label>
+      <div class="f-group">
+        <h4>PRICE (TWD)</h4>
+        <label class="f-item"><input type="radio" name="price"> 5萬以下</label>
+        <label class="f-item"><input type="radio" name="price" checked> 5–20萬</label>
+        <label class="f-item"><input type="radio" name="price"> 20萬以上</label>
       </div>
-      <div class="filter-group">
-        <h4>STATUS</h4>
-        <label class="filter-item"><input type="checkbox" checked> 現貨</label>
-        <label class="filter-item"><input type="checkbox" checked> 預購</label>
-        <label class="filter-item"><input type="checkbox"> 候補中</label>
+      <div class="f-group">
+        <h4>AVAILABILITY</h4>
+        <label class="f-item"><input type="checkbox" checked> 現貨</label>
+        <label class="f-item"><input type="checkbox" checked> 預購</label>
+        <label class="f-item"><input type="checkbox"> 候補</label>
       </div>
-    </div>
-    <div>
-      <div class="shop-header">
+    </aside>
+    <main>
+      <div class="shop-main-hd">
         <h2>全部商品</h2>
-        <span class="shop-count">共 47 件商品</span>
+        <span style="font-size:12px;color:var(--mid)">共 47 件</span>
       </div>
       <div class="shop-grid" id="shopGrid"></div>
-    </div>
+    </main>
   </div>
-</div>
-
-<!-- ════════════════════════════════
-     AI RECOGNITION PAGE
-════════════════════════════════ -->
-<div class="page" id="page-ai">
-  <div class="ai-page">
-
-    <div class="ai-page-header">
-      <span class="section-label">POWERED BY GOOGLE CLOUD VISION API</span>
-      <h2>AI 包款智慧辨識</h2>
-      <p>上傳任一名牌包照片，系統即時連接 Google Cloud Vision API 辨識品牌與型號，並自動比對我們的庫存，找到完全相同的款式。</p>
-    </div>
-
-    <div class="ai-steps">
-      <div class="ai-step">
-        <span class="step-num">01</span>
-        <h4>上傳照片</h4>
-        <p>上傳您拍攝的名牌包照片，或從網路下載的商品圖</p>
-      </div>
-      <div class="ai-step">
-        <span class="step-num">02</span>
-        <h4>AI 辨識分析</h4>
-        <p>系統調用 Google Cloud Vision API，辨識品牌、型號、材質、顏色</p>
-      </div>
-      <div class="ai-step">
-        <span class="step-num">03</span>
-        <h4>比對庫存</h4>
-        <p>自動搜尋相同款式的庫存，顯示價格、顏色與供貨狀態</p>
+  <footer style="margin-top:0">
+    <div class="foot-inner">
+      <div class="foot-bottom" style="border-top:none;padding-top:0">
+        <p>© 2026 Luxe Explore Boutique</p>
+        <button class="btn-cta" onclick="showPage('home');window.scrollTo(0,0)">← 回首頁</button>
       </div>
     </div>
-
-    <!-- UPLOAD ZONE -->
-    <div class="upload-zone" id="uploadZone">
-      <input type="file" accept="image/*" onchange="handleUpload(this)" id="fileInput">
-      <span class="upload-icon">📸</span>
-      <h3>上傳名牌包照片</h3>
-      <p>支援 JPG、PNG、WEBP — 最大 10MB<br>可拖曳上傳或點擊選擇檔案</p>
-      <span class="btn-ghost" style="display:inline-block;pointer-events:none">選擇照片</span>
-    </div>
-
-    <!-- PREVIEW -->
-    <div class="preview-wrap" id="previewWrap">
-      <img id="previewImg" src="" alt="uploaded">
-      <h4>已上傳 · 正在準備辨識...</h4>
-    </div>
-
-    <!-- ANALYZING -->
-    <div class="analyzing" id="analyzingBox">
-      <div class="analyzing-spinner"></div>
-      <h3>Google Cloud Vision 辨識中</h3>
-      <p id="analyzeStep">正在連接 API 並分析影像特徵...</p>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
-    </div>
-
-    <!-- RESULTS -->
-    <div class="results" id="resultsBox">
-      <div class="result-header">
-        <div class="result-top">
-          <img id="resultThumb" class="result-preview" src="" alt="result">
-          <div style="flex:1">
-            <p class="result-brand">LOUIS VUITTON</p>
-            <h3 class="result-info"><span style="font-family:'Cinzel',serif;font-size:22px;color:var(--rose)">Neverfull MM</span></h3>
-            <div class="result-tags">
-              <span class="result-tag">托特包</span>
-              <span class="result-tag">Monogram Canvas</span>
-              <span class="result-tag">中型</span>
-              <span class="result-tag">經典款</span>
-            </div>
-            <div class="confidence-bar">
-              <span>品牌辨識</span>
-              <div class="conf-track"><div class="conf-fill" style="width:98%"></div></div>
-              <span style="color:var(--rose);font-weight:500">98.7%</span>
-            </div>
-            <div class="confidence-bar">
-              <span>型號辨識</span>
-              <div class="conf-track"><div class="conf-fill" style="width:94%"></div></div>
-              <span style="color:var(--rose);font-weight:500">94.2%</span>
-            </div>
-          </div>
-        </div>
-        <div class="result-meta">
-          <div class="meta-item">
-             <label>品牌</label>
-             <p>Louis Vuitton</p>
-          </div>
-          <div class="meta-item">
-             <label>系列</label>
-             <p>Neverfull</p>
-          </div>
-          <div class="meta-item">
-             <label>尺寸</label>
-             <p>MM（中型）</p>
-          </div>
-          <div class="meta-item">
-             <label>材質</label>
-             <p>Monogram Canvas</p>
-          </div>
-          <div class="meta-item">
-             <label>原廠建議售價</label>
-             <p id="retailPrice">NT$ 54,000</p>
-          </div>
-          <div class="meta-item">
-             <label>市場行情</label>
-             <p style="color:var(--cta)">NT$ 48,000–52,000</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="inventory-section">
-        <h3>庫存比對結果</h3>
-        <p>在我們的資料庫中找到 <strong style="color:var(--rose)">5 件</strong>相同款式，以下為目前可購買項目：</p>
-        <div class="inventory-grid">
-          <div class="inv-card">
-            <div class="inv-img" style="background:linear-gradient(135deg,#8B7355,#6B5340)">Monogram</div>
-            <div class="inv-body">
-              <p class="inv-brand">LOUIS VUITTON</p>
-              <p class="inv-name">Neverfull MM</p>
-              <p class="inv-color">Monogram Canvas · 玫瑰粉內裡</p>
-              <div class="inv-footer">
-                <span class="inv-price" id="p1">NT$ 48,000</span>
-                <span class="inv-status status-in">現貨</span>
-              </div>
-            </div>
-          </div>
-          <div class="inv-card">
-            <div class="inv-img" style="background:linear-gradient(135deg,#2D3A2D,#1A2A1A)">Damier</div>
-            <div class="inv-body">
-              <p class="inv-brand">LOUIS VUITTON</p>
-              <p class="inv-name">Neverfull MM</p>
-              <p class="inv-color">Damier Ebène · 深棕格紋</p>
-              <div class="inv-footer">
-                <span class="inv-price" id="p2">NT$ 46,500</span>
-                <span class="inv-status status-in">現貨</span>
-              </div>
-            </div>
-          </div>
-          <div class="inv-card">
-            <div class="inv-img" style="background:linear-gradient(135deg,#B8A090,#9A7A65)">Empreinte</div>
-            <div class="inv-body">
-              <p class="inv-brand">LOUIS VUITTON</p>
-              <p class="inv-name">Neverfull MM</p>
-              <p class="inv-color">Empreinte 皮革 · 奶茶色</p>
-              <div class="inv-footer">
-                <span class="inv-price" id="p3">NT$ 62,000</span>
-                <span class="inv-status status-pre">預購</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="ai-reset" onclick="resetAI()">↩ 重新辨識</button>
-      </div>
-    </div>
-  </div>
+  </footer>
 </div>
 
 <script>
 const RATES={TWD:1,USD:0.031,JPY:4.72,EUR:0.029};
-const SYMBOLS={TWD:'NT$',USD:'US$',JPY:'¥',EUR:'€'};
-let currentCurrency='TWD';
+const SYMS={TWD:'NT$',USD:'US$',JPY:'¥',EUR:'€'};
+let cur='TWD';
 
 const products=[
-  {brand:'LOUIS VUITTON',name:'Neverfull MM',meta:'Monogram Canvas · 中型',price:48000,badge:'hot',badgeText:'熱銷',color:'#6B5340',status:'現貨'},
-  {brand:'CHANEL',name:'Classic Flap Medium',meta:'黑色荔枝皮 金扣',price:298000,badge:'new',badgeText:'新到',color:'#1A1A1A',status:'預購'},
-  {brand:'HERMÈS',name:'Birkin 30',meta:'Togo 皮革 · Noir PHW',price:580000,badge:'',badgeText:'',color:'#3D2B1F',status:'候補'},
-  {brand:'GUCCI',name:'Marmont Mini',meta:'Matelassé 皮革 · 玫瑰金',price:52000,badge:'new',badgeText:'新到',color:'#8B4A3A',status:'現貨'},
-  {brand:'DIOR',name:'Lady Dior Mini',meta:'羊皮 · 藕粉色',price:198000,badge:'hot',badgeText:'熱銷',color:'#C4A0A0',status:'預購'},
-  {brand:'PRADA',name:'Re-Edition 2005',meta:'Nylon · 黑色',price:38000,badge:'',badgeText:'',color:'#2A2A2A',status:'現貨'},
-  {brand:'LOUIS VUITTON',name:'Speedy 30',meta:'Damier Ebène · 棋盤格',price:42000,badge:'',badgeText:'',color:'#2D3A2D',status:'現貨'},
-  {brand:'CHANEL',name:'22 Bag',meta:'小牛皮 · 米白色',price:186000,badge:'new',badgeText:'新到',color:'#D4C8B0',status:'預購'},
+  {brand:'LOUIS VUITTON',name:'Neverfull MM',meta:'Monogram Canvas · 玫瑰粉內裡',price:48000,badge:'b-hot',bTxt:'熱銷',status:'現貨',sClass:'s-in',img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80&fit=crop'},
+  {brand:'CHANEL',name:'Classic Flap Medium',meta:'黑色荔枝皮 · 金扣',price:298000,badge:'b-new',bTxt:'新到',status:'預購',sClass:'s-pre',img:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&q=80&fit=crop'},
+  {brand:'GUCCI',name:'Marmont Mini',meta:'Matelassé 皮革 · 玫瑰金',price:52000,badge:'b-new',bTxt:'新到',status:'現貨',sClass:'s-in',img:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80&fit=crop'},
+  {brand:'DIOR',name:'Lady Dior Mini',meta:'羊皮 · 藕粉色',price:198000,badge:'b-hot',bTxt:'熱銷',status:'預購',sClass:'s-pre',img:'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&q=80&fit=crop'},
+  {brand:'PRADA',name:'Re-Edition 2005',meta:'Re-Nylon · 黑色',price:38000,badge:'',bTxt:'',status:'現貨',sClass:'s-in',img:'https://images.unsplash.com/photo-1576053139778-7e32f2ae3cfd?w=500&q=80&fit=crop'},
+  {brand:'LOUIS VUITTON',name:'Speedy 30',meta:'Damier Ebène · 棋盤格',price:42000,badge:'',bTxt:'',status:'現貨',sClass:'s-in',img:'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=500&q=80&fit=crop'},
+  {brand:'HERMÈS',name:'Kelly 28',meta:'Epsom 皮革 · 奶茶色',price:480000,badge:'b-pre',bTxt:'候補',status:'候補',sClass:'s-wait',img:'https://images.unsplash.com/photo-1594938298603-c8148c4b2468?w=500&q=80&fit=crop'},
+  {brand:'BOTTEGA VENETA',name:'Jodie Mini',meta:'Intrecciato 編織皮 · 燕麥色',price:68000,badge:'b-new',bTxt:'新到',status:'現貨',sClass:'s-in',img:'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=500&q=80&fit=crop'},
 ];
 
-function fmtPrice(ntd){
-  const rate=RATES[currentCurrency];
-  const sym=SYMBOLS[currentCurrency];
-  const val=ntd*rate;
-  if(currentCurrency==='JPY')return sym+Math.round(val).toLocaleString();
-  if(currentCurrency==='TWD')return sym+' '+Math.round(val).toLocaleString();
-  return sym+val.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+function fmt(ntd){
+  const v=ntd*RATES[cur],s=SYMS[cur];
+  if(cur==='TWD')return s+' '+Math.round(v).toLocaleString();
+  if(cur==='JPY')return s+Math.round(v).toLocaleString();
+  return s+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
 }
-
-function renderCard(p,i){
-  const statusClass=p.status==='現貨'?'badge-new':p.status==='預購'?'badge-hot':'badge-pre';
+function card(p){
   return`<div class="prod-card">
     <div class="prod-img-wrap">
-      <div class="prod-img" style="background:linear-gradient(135deg,${p.color},${p.color}bb)">
-        ${p.badge?`<span class="prod-badge ${statusClass==='badge-new'?'badge-hot':'badge-pre'}">${p.badgeText}</span>`:''}
-        <span style="color:rgba(255,255,255,0.15);font-family:'Cinzel',serif;font-size:28px">${p.brand.split(' ')[0]}</span>
-      </div>
+      ${p.badge?`<span class="prod-badge ${p.badge}">${p.bTxt}</span>`:''}
+      <img src="${p.img}" alt="${p.name}" loading="lazy">
     </div>
     <p class="prod-brand">${p.brand}</p>
     <h4 class="prod-name">${p.name}</h4>
     <p class="prod-meta">${p.meta}</p>
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <span class="prod-price" data-ntd="${p.price}">${fmtPrice(p.price)}</span>
-      <span style="font-size:11px;padding:3px 10px;border-radius:20px;${p.status==='現貨'?'background:#e8f4e8;color:#2d7a2d':p.status==='預購'?'background:#f4e8f0;color:#7a2d5a':'background:#f4f0e8;color:#7a5a2d'}">${p.status}</span>
+    <div class="prod-row">
+      <span class="prod-price" data-ntd="${p.price}">${fmt(p.price)}</span>
+      <span class="prod-status ${p.sClass}">${p.status}</span>
     </div>
   </div>`;
 }
-
-function renderGrids(){
-  document.getElementById('homeProductGrid').innerHTML=products.slice(0,4).map(renderCard).join('');
-  document.getElementById('shopGrid').innerHTML=products.map(renderCard).join('');
+function render(){
+  document.getElementById('homeGrid').innerHTML=products.slice(0,4).map(card).join('');
+  document.getElementById('shopGrid').innerHTML=products.map(card).join('');
 }
-renderGrids();
+render();
 
 function changeCurrency(v){
-  currentCurrency=v;
-  document.querySelectorAll('[data-ntd]').forEach(el=>{
-    el.textContent=fmtPrice(+el.dataset.ntd);
-  });
-  document.getElementById('retailPrice').textContent=fmtPrice(54000);
-  document.getElementById('p1').textContent=fmtPrice(48000);
-  document.getElementById('p2').textContent=fmtPrice(46500);
-  document.getElementById('p3').textContent=fmtPrice(62000);
+  cur=v;
+  document.querySelectorAll('[data-ntd]').forEach(el=>el.textContent=fmt(+el.dataset.ntd));
 }
-
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(id==='home')document.querySelector('.nav-item').classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-const analyzeSteps=[
-  '正在連接 Google Cloud Vision API...',
-  '分析影像特徵與視覺標誌...',
-  '辨識品牌 logo 與縫線工藝...',
-  '比對型號資料庫...',
-  '搜尋庫存中的相同款式...',
-  '整合辨識結果與庫存資料...',
-];
-
-function handleUpload(input){
-  if(!input.files||!input.files[0])return;
-  const file=input.files[0];
-  const reader=new FileReader();
-  reader.onload=function(e){
-    document.getElementById('uploadZone').style.display='none';
-    const prev=document.getElementById('previewWrap');
-    const img=document.getElementById('previewImg');
-    img.src=e.target.result;
-    document.getElementById('resultThumb').src=e.target.result;
-    prev.style.display='block';
-    setTimeout(startAnalyzing,600);
-  };
-  reader.readAsDataURL(file);
-}
-
-function startAnalyzing(){
-  document.getElementById('previewWrap').style.display='none';
-  const box=document.getElementById('analyzingBox');
-  box.style.display='block';
-  let i=0;
-  const stepEl=document.getElementById('analyzeStep');
-  const timer=setInterval(()=>{
-    if(i<analyzeSteps.length){stepEl.textContent=analyzeSteps[i];i++;}
-    else{clearInterval(timer);}
-  },400);
-  setTimeout(()=>{
-    box.style.display='none';
-    document.getElementById('resultsBox').style.display='block';
-    changeCurrency(currentCurrency);
-  },2600);
-}
-
-function resetAI(){
-  document.getElementById('uploadZone').style.display='block';
-  document.getElementById('previewWrap').style.display='none';
-  document.getElementById('analyzingBox').style.display='none';
-  document.getElementById('resultsBox').style.display='none';
-  document.getElementById('fileInput').value='';
-}
-
-const uz=document.getElementById('uploadZone');
-uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag')});
-uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));
-uz.addEventListener('drop',e=>{
-  e.preventDefault();uz.classList.remove('drag');
-  const f=e.dataTransfer.files[0];
-  if(f&&f.type.startsWith('image/')){
-    const dt=new DataTransfer();dt.items.add(f);
-    document.getElementById('fileInput').files=dt.files;
-    handleUpload(document.getElementById('fileInput'));
-  }
-});
 </script>
 </body>
 </html>
